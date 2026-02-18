@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SnowSkye AI | AI Chatbot & Website Development Agency</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* GLOBAL */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#020617;
+color:white;
+line-height:1.6;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+width:100%;
+top:0;
+background:#020617;
+padding:20px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid rgba(255,255,255,0.05);
+z-index:1000;
+}
+
+.logo{
+font-size:24px;
+font-weight:700;
+color:#38bdf8;
+}
+
+.nav-links a{
+margin-left:30px;
+text-decoration:none;
+color:#94a3b8;
+}
+
+.nav-links a:hover{
+color:#38bdf8;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+background:linear-gradient(135deg,#020617,#0f172a);
+}
+
+.hero h1{
+font-size:55px;
+margin-bottom:20px;
+}
+
+.hero p{
+color:#94a3b8;
+font-size:20px;
+max-width:700px;
+margin:auto;
+}
+
+/* BUTTON */
+
+.btn{
+padding:15px 35px;
+border-radius:30px;
+border:none;
+margin:10px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.primary{
+background:#38bdf8;
+color:black;
+}
+
+.primary:hover{
+background:#0ea5e9;
+}
+
+.secondary{
+background:transparent;
+border:1px solid #38bdf8;
+color:#38bdf8;
+}
+
+.secondary:hover{
+background:#38bdf8;
+color:black;
+}
+
+/* TRUST BAR */
+
+.trust-bar{
+background:#020617;
+padding:20px;
+text-align:center;
+color:#94a3b8;
+border-top:1px solid rgba(255,255,255,0.05);
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+/* SECTION */
+
+.section{
+padding:80px 20px;
+text-align:center;
+}
+
+.section h2{
+font-size:36px;
+margin-bottom:20px;
+}
+
+/* CARDS */
+
+.cards{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
+margin-top:40px;
+}
+
+.card{
+background:#020617;
+border:1px solid rgba(255,255,255,0.05);
+padding:30px;
+border-radius:15px;
+width:300px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+border-color:#38bdf8;
+}
+
+.card h3{
+color:#38bdf8;
+margin-bottom:10px;
+}
+
+/* PRICE */
+
+.price{
+font-size:32px;
+color:#38bdf8;
+margin-top:10px;
+font-weight:bold;
+}
+
+/* GUARANTEE */
+
+.guarantee{
+margin-top:15px;
+color:#94a3b8;
+font-size:14px;
+}
+
+/* CTA */
+
+.cta{
+padding:80px 20px;
+text-align:center;
+}
+
+.cta-box{
+background:linear-gradient(135deg,#38bdf8,#0ea5e9);
+padding:50px;
+border-radius:20px;
+max-width:700px;
+margin:auto;
+color:black;
+}
+
+/* FOOTER */
+
+footer{
+padding:40px;
+text-align:center;
+color:#94a3b8;
+}
+
+/* FLOAT BUTTON */
+
+.paypal-float{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#38bdf8;
+color:black;
+border:none;
+padding:15px 25px;
+border-radius:30px;
+font-weight:600;
+cursor:pointer;
+z-index:999;
+box-shadow:0 0 15px rgba(56,189,248,0.5);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:32px;
+}
+
+.nav-links{
+display:none;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="logo">SnowSkye AI</div>
+
+<div class="nav-links">
+
+<a href="#">Home</a>
+<a href="#services">Services</a>
+<a href="#pricing">Pricing</a>
+<a href="#contact">Contact</a>
+
+</div>
+
+</div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div>
+
+<h1>Turn Your Website Into a 24/7 Sales Machine</h1>
+
+<p>
+We build professional websites and AI chatbots that automatically capture leads, answer customers, and increase your revenue.
+</p>
+
+<br>
+
+<button class="btn primary" onclick="scrollContact()">
+Get Free Consultation
+</button>
+
+<button class="btn secondary" onclick="scrollPricing()">
+View Pricing
+</button>
+
+</div>
+
+</section>
+
+<!-- TRUST BAR -->
+
+<div class="trust-bar">
+Secure Payments • Trusted Service • Professional Delivery • PayPal Buyer Protection
+</div>
+
+<!-- SERVICES -->
+
+<section class="section" id="services">
+
+<h2>Our Services</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>AI Chatbot Installation</h3>
+<p>Automate responses and capture customer leads 24/7.</p>
+</div>
+
+<div class="card">
+<h3>Professional Website Development</h3>
+<p>Modern, fast, mobile-friendly business websites.</p>
+</div>
+
+<div class="card">
+<h3>Automation Systems</h3>
+<p>Lead capture, booking automation, and client systems.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- PRICING -->
+
+<section class="section" id="pricing">
+
+<h2>Pricing Plans</h2>
+
+<p style="color:#94a3b8;">
+One-time payment. No monthly fees.
+</p>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Starter</h3>
+
+<p>AI Chatbot Installation</p>
+
+<div class="price">$100</div>
+
+<div class="guarantee">
+✔ Delivered in 24-48 hours<br>
+✔ PayPal Buyer Protection<br>
+✔ Professional installation
+</div>
+
+<br>
+
+<a href="https://www.paypal.com/ncp/payment/U64JS55JSGEY2" target="_blank">
+<button class="btn primary" style="width:100%;">
+Pay Securely with PayPal
+</button>
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>Business</h3>
+
+<p>Website + AI Chatbot</p>
+
+<div class="price">$300</div>
+
+<div class="guarantee">
+✔ Full business website<br>
+✔ AI chatbot included<br>
+✔ Lead automation system
+</div>
+
+<br>
+
+<a href="https://www.paypal.com/ncp/payment/Y6NSF2XGBEZZ8" target="_blank">
+<button class="btn primary" style="width:100%;">
+Pay Securely with PayPal
+</button>
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>Premium</h3>
+
+<p>Full Automation System</p>
+
+<div class="price">$500</div>
+
+<div class="guarantee">
+✔ Website + chatbot + automation<br>
+✔ Lead capture system<br>
+✔ Priority delivery
+</div>
+
+<br>
+
+<a href="https://www.paypal.com/ncp/payment/QRDTHTD27GVWS" target="_blank">
+<button class="btn primary" style="width:100%;">
+Pay Securely with PayPal
+</button>
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta" id="contact">
+
+<div class="cta-box">
+
+<h2>Start Your Project Today</h2>
+
+<p>Email: snowskye.ai@gmail.com</p>
+
+<p>Response within 24 hours</p>
+
+<br>
+
+<a href="https://paypal.me/SnowskyeAI" target="_blank">
+<button class="btn primary">
+Secure Your Slot Now
+</button>
+</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 SnowSkye AI  
+AI Chatbot & Website Development Agency  
+
+<br><br>
+
+Secure Payments via PayPal  
+Professional AI Solutions  
+
+</footer>
+
+<!-- FLOATING PAY BUTTON -->
+
+<a href="https://paypal.me/SnowskyeAI" target="_blank">
+<button class="paypal-float">
+Pay Securely
+</button>
+</a>
+
+<!-- CHATBOT -->
+
+<script
+src="https://lead-chatbot-gti5.onrender.com/widget.js"
+data-api-key="sk-65aec011-51da-4f81-8a34-936f7b8cbb3e"
+data-brand="SnowSkye AI Assistant"
+data-color="#38bdf8">
+</script>
+
+<script>
+
+function scrollContact(){
+document.getElementById("contact").scrollIntoView({behavior:"smooth"});
+}
+
+function scrollPricing(){
+document.getElementById("pricing").scrollIntoView({behavior:"smooth"});
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Services | SnowSkye AI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f4f7fb;
+color:#1a1a1a;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:white;
+padding:18px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 4px 20px rgba(0,0,0,0.08);
+}
+
+.logo{
+font-size:24px;
+font-weight:700;
+color:#0077ff;
+}
+
+.nav-links a{
+margin-left:25px;
+text-decoration:none;
+color:#333;
+font-weight:500;
+}
+
+/* HEADER */
+
+.header{
+text-align:center;
+padding:80px 20px 40px;
+}
+
+.header h1{
+font-size:40px;
+color:#0077ff;
+margin-bottom:10px;
+}
+
+.header p{
+color:#555;
+}
+
+/* SERVICES */
+
+.services{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+padding:40px 20px;
+}
+
+.card{
+background:white;
+padding:35px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card h3{
+color:#0077ff;
+margin-bottom:15px;
+}
+
+.card p{
+margin-bottom:20px;
+color:#555;
+}
+
+.price{
+font-size:22px;
+font-weight:700;
+color:#00a8ff;
+margin-bottom:15px;
+}
+
+.features{
+font-size:14px;
+color:#666;
+margin-bottom:20px;
+}
+
+button{
+padding:14px 25px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#0077ff,#00c6ff);
+color:white;
+font-weight:600;
+cursor:pointer;
+}
+
+/* CTA */
+
+.cta{
+text-align:center;
+padding:80px 20px;
+}
+
+.cta-box{
+background:linear-gradient(135deg,#0077ff,#00c6ff);
+color:white;
+padding:60px;
+border-radius:20px;
+max-width:700px;
+margin:auto;
+}
+
+.cta-box h2{
+margin-bottom:15px;
+}
+
+/* FOOTER */
+
+footer{
+background:#0a0a0a;
+color:white;
+padding:30px;
+text-align:center;
+margin-top:40px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.header h1{
+font-size:30px;
+}
+
+.navbar{
+padding:15px 20px;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="logo">SnowSkye AI</div>
+
+<div class="nav-links">
+
+<a href="index.html">Home</a>
+<a href="services.html">Services</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
+</div>
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+<h1>AI & Website Services</h1>
+
+<p>Professional AI chatbot installation and website development for businesses.</p>
+
+</div>
+
+
+<!-- SERVICES -->
+
+<div class="services">
+
+
+<!-- CHATBOT -->
+
+<div class="card">
+
+<h3>AI Chatbot Installation</h3>
+
+<p>
+Install intelligent chatbot on your website that automatically replies to customers 24/7.
+</p>
+
+<div class="price">$75</div>
+
+<div class="features">
+• Instant customer replies<br>
+• Lead capture system<br>
+• Booking automation<br>
+• 24/7 support assistant
+</div>
+
+<button onclick="contact()">Get Started</button>
+
+</div>
+
+
+<!-- WEBSITE -->
+
+<div class="card">
+
+<h3>Business Website Development</h3>
+
+<p>
+Modern, fast, and mobile-friendly website for your business.
+</p>
+
+<div class="price">$150</div>
+
+<div class="features">
+• Professional design<br>
+• Mobile responsive<br>
+• Contact form integration<br>
+• Fast performance
+</div>
+
+<button onclick="contact()">Get Started</button>
+
+</div>
+
+
+<!-- FULL PACKAGE -->
+
+<div class="card">
+
+<h3>Website + AI Chatbot Package</h3>
+
+<p>
+Complete solution including website and AI chatbot automation.
+</p>
+
+<div class="price">$250</div>
+
+<div class="features">
+• Full business website<br>
+• AI chatbot installed<br>
+• Lead capture automation<br>
+• Deployment included
+</div>
+
+<button onclick="contact()">Get Started</button>
+
+</div>
+
+
+</div>
+
+
+<!-- CTA -->
+
+<div class="cta">
+
+<div class="cta-box">
+
+<h2>Start Automating Your Business Today</h2>
+
+<p>Email: snowskye.ai@gmail.com</p>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+SnowSkye AI © 2026<br>
+AI Chatbot & Website Developer
+
+</footer>
+
+
+<!-- CHATBOT -->
+
+<script
+src="https://lead-chatbot-gti5.onrender.com/widget.js"
+data-api-key="sk-65aec011-51da-4f81-8a34-936f7b8cbb3e"
+data-brand="SnowSkye AI Assistant"
+data-color="#0077ff">
+</script>
+
+
+<script>
+
+function contact(){
+window.location.href="mailto:snowskye.ai@gmail.com";
+}
+
+</script>
+
+
+</body>
+</html>
