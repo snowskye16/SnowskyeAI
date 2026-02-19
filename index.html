@@ -454,7 +454,10 @@ Pay Securely
 
 <!-- CHATBOT -->
 
-<!-- SNOWSKYE AI CHATBOT -->
+<!-- ========================= -->
+<!-- SNOWSKYE AI CHATBOT START -->
+<!-- ========================= -->
+
 <style>
 
 #snowChatBtn{
@@ -473,11 +476,6 @@ font-size:28px;
 cursor:pointer;
 z-index:99999;
 box-shadow:0 10px 30px rgba(0,0,0,0.35);
-transition:0.3s;
-}
-
-#snowChatBtn:hover{
-transform:scale(1.08);
 }
 
 #snowChatBox{
@@ -486,7 +484,7 @@ bottom:100px;
 right:20px;
 width:380px;
 height:540px;
-background:#ffffff;
+background:#fff;
 border-radius:18px;
 display:none;
 flex-direction:column;
@@ -502,7 +500,6 @@ padding:16px;
 font-weight:600;
 display:flex;
 justify-content:space-between;
-align-items:center;
 }
 
 #snowMessages{
@@ -512,7 +509,7 @@ overflow-y:auto;
 background:#f4f7fb;
 }
 
-.msg{
+.snowMsg{
 padding:12px 15px;
 margin:6px 0;
 border-radius:14px;
@@ -520,13 +517,13 @@ max-width:80%;
 font-size:14px;
 }
 
-.user{
+.snowUser{
 background:#0066ff;
 color:#fff;
 margin-left:auto;
 }
 
-.bot{
+.snowBot{
 background:#e8f0ff;
 color:#000;
 }
@@ -541,7 +538,6 @@ flex:1;
 padding:15px;
 border:none;
 outline:none;
-font-size:14px;
 }
 
 #snowSend{
@@ -550,11 +546,6 @@ color:#fff;
 border:none;
 padding:0 25px;
 cursor:pointer;
-font-weight:600;
-}
-
-#snowSend:hover{
-background:#0052cc;
 }
 
 </style>
@@ -566,7 +557,7 @@ background:#0052cc;
 
 <div id="snowHeader">
 SnowSkye AI Assistant
-<span id="snowClose" style="cursor:pointer;font-size:18px;">✕</span>
+<span id="snowClose" style="cursor:pointer">✕</span>
 </div>
 
 <div id="snowMessages"></div>
@@ -581,8 +572,17 @@ SnowSkye AI Assistant
 
 <script>
 
+// =============================
+// CONFIG
+// =============================
+
 const SERVER="https://lead-chatbot-gti5.onrender.com";
 const API_KEY="sk-snowskyeAI2026";
+
+
+// =============================
+// ELEMENTS
+// =============================
 
 const btn=document.getElementById("snowChatBtn");
 const box=document.getElementById("snowChatBox");
@@ -590,6 +590,26 @@ const close=document.getElementById("snowClose");
 const input=document.getElementById("snowInput");
 const send=document.getElementById("snowSend");
 const messages=document.getElementById("snowMessages");
+
+
+// =============================
+// SESSION ID
+// =============================
+
+let sessionId=localStorage.getItem("snow_session");
+
+if(!sessionId){
+
+sessionId=crypto.randomUUID();
+
+localStorage.setItem("snow_session",sessionId);
+
+}
+
+
+// =============================
+// LEAD FLOW
+// =============================
 
 let leadStep=0;
 
@@ -600,32 +620,72 @@ service:""
 };
 
 
-/* OPEN CLOSE */
+// =============================
+// OPEN / CLOSE
+// =============================
 
-btn.onclick=()=> box.style.display="flex";
-close.onclick=()=> box.style.display="none";
+btn.onclick=()=>{
+
+box.style.display="flex";
+
+if(messages.children.length===0){
+
+botMessage("Hello! Welcome to SnowSkye AI 👋");
+
+setTimeout(()=>{
+botMessage("May I know your name?");
+leadStep=1;
+},800);
+
+}
+
+};
+
+close.onclick=()=>{
+box.style.display="none";
+};
 
 
-/* ADD MESSAGE */
+// =============================
+// ADD MESSAGE
+// =============================
 
-function addMessage(text,isUser=false){
+function userMessage(text){
 
-const msg=document.createElement("div");
+const div=document.createElement("div");
 
-msg.className="msg "+(isUser?"user":"bot");
+div.className="snowMsg snowUser";
 
-msg.innerText=text;
+div.innerText=text;
 
-messages.appendChild(msg);
+messages.appendChild(div);
+
+messages.scrollTop=messages.scrollHeight;
+
+}
+
+function botMessage(text){
+
+const div=document.createElement("div");
+
+div.className="snowMsg snowBot";
+
+div.innerText=text;
+
+messages.appendChild(div);
 
 messages.scrollTop=messages.scrollHeight;
 
 }
 
 
-/* SAVE LEAD TO CRM */
+// =============================
+// SAVE LEAD
+// =============================
 
 async function saveLead(){
+
+try{
 
 await fetch(SERVER+"/lead",{
 
@@ -649,10 +709,14 @@ message:
 
 });
 
+}catch{}
+
 }
 
 
-/* SEND MESSAGE */
+// =============================
+// SEND MESSAGE
+// =============================
 
 async function sendMessage(){
 
@@ -662,10 +726,12 @@ if(!text) return;
 
 input.value="";
 
-addMessage(text,true);
+userMessage(text);
 
 
-/* LEAD CAPTURE FLOW */
+// =============================
+// LEAD CAPTURE FLOW
+// =============================
 
 if(leadStep===1){
 
@@ -673,7 +739,7 @@ leadData.name=text;
 
 leadStep=2;
 
-addMessage("Nice to meet you "+leadData.name+"! What is your email?");
+botMessage("Nice to meet you "+text+"! What is your email?");
 
 return;
 
@@ -685,7 +751,7 @@ leadData.email=text;
 
 leadStep=3;
 
-addMessage("What service do you need?\n• AI Chatbot\n• Website\n• Automation");
+botMessage("What service do you need?\n• AI Chatbot\n• Website\n• Automation");
 
 return;
 
@@ -697,7 +763,7 @@ leadData.service=text;
 
 leadStep=4;
 
-addMessage("✅ Thank you! Our team will contact you within 24 hours.");
+botMessage("✅ Thank you! Our team will contact you shortly.");
 
 saveLead();
 
@@ -706,7 +772,9 @@ return;
 }
 
 
-/* AI CHAT */
+// =============================
+// AI CHAT
+// =============================
 
 try{
 
@@ -722,51 +790,59 @@ body:JSON.stringify({
 
 apiKey:API_KEY,
 
-message:text
+message:text,
+sessionId
 
 })
 
 });
 
+if(!res.ok){
+
+botMessage("Server unavailable. Try again later.");
+
+return;
+
+}
+
 const data=await res.json();
 
-addMessage(data.reply);
+if(data.reply){
+
+botMessage(data.reply);
+
+}else{
+
+botMessage("No response from AI.");
+
+}
 
 }catch{
 
-addMessage("⚠ Server offline. Please try again later.");
+botMessage("Connection error.");
 
 }
 
 }
 
+
+// =============================
+// EVENTS
+// =============================
 
 send.onclick=sendMessage;
 
-input.addEventListener("keypress",e=>{
+input.addEventListener("keypress",(e)=>{
 
 if(e.key==="Enter") sendMessage();
 
 });
 
-
-/* AUTO START */
-
-setTimeout(()=>{
-
-addMessage("👋 Welcome to SnowSkye AI");
-
-setTimeout(()=>{
-
-addMessage("May I know your name?");
-
-leadStep=1;
-
-},1000);
-
-},800);
-
 </script>
+
+<!-- ========================= -->
+<!-- SNOWSKYE AI CHATBOT END -->
+<!-- ========================= -->
 
 
 
